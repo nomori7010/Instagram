@@ -62,6 +62,8 @@ class ViewController: UIViewController {
         tabBarController.setViewController(homeViewController, atIndex: 0)
         tabBarController.setViewController(settingViewController, atIndex: 2)
         
+        tabBarController.setSelectedIndex(0, animated: false)
+        
         //真ん中のタブはボタンとして扱う
         tabBarController.highlightButtonAtIndex(1)
         tabBarController.setAction({

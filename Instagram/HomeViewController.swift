@@ -60,8 +60,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.postArray.insert(postData, atIndex: index)
                 
                 //TableViewの該当セルだけを更新する
+                /*
+                 self.tableView.reloadData()
+                */
                 let indexPath = NSIndexPath(forRow: index, inSection: 0)
                 self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.None)
+                
             }
         })
     }
@@ -83,6 +87,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         //セル内のボタンのアクションをソースコードで設定する
         cell.likeButton.addTarget(self, action:#selector(HomeViewController.handleButton(_:event:)), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        //セル内のコメントボタンのアクションをソースコードで設定する
+        cell.commentButton.addTarget(self, action:#selector(HomeViewController.handleCommentButton(_:event:)),forControlEvents: UIControlEvents.TouchUpInside)
         
         //UILabelの行数が変わっている可能性があるので再描画させる
         cell.layoutIfNeeded()
@@ -132,12 +139,27 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let caption = postData.caption
             let time = (postData.date?.timeIntervalSinceReferenceDate)! as NSTimeInterval
             let likes = postData.likes
-        
+            let comments = postData.comments
             //辞書を作成してFirebaseに保存する
-            let post = ["caption": caption!, "image": imageString!, "name": name!, "time": time, "likes": likes]
+            let post = ["caption": caption!, "image": imageString!, "name": name!, "time": time, "likes": likes, "comments":comments]
             let postRef = FIRDatabase.database().reference().child(CommonConst.PostPATH)
             postRef.child(postData.id!).setValue(post)
         }
+    }
+    //セル内のコメントボタンがタップされた時に呼ばれるメソッド
+    func handleCommentButton(sender: UIButton, event: UIEvent) {
+        //タップされたセルのインデックスを求める
+        let touch = event.allTouches()?.first
+        let point = touch!.locationInView(self.tableView)
+        let indexPath = tableView.indexPathForRowAtPoint(point)
+        
+        //配列からタップされたインデックスのデータを取り出す
+        let postData = postArray[indexPath!.row]
+
+        let commentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Comment") as! CommentViewController
+        commentViewController.postData = postData
+        
+        self.presentViewController(commentViewController,animated: true,completion: nil)
     }
 
 }

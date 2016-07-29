@@ -62,8 +62,9 @@ class SettingViewController: UIViewController {
 
         //NSUserDefaultsから表示名を取得してTextFieldに設定する
         let ud = NSUserDefaults.standardUserDefaults()
-        let name = ud.objectForKey(CommonConst.DisplayNameKey) as! String
-        displayNameTextField.text = name
+        if let name = ud.objectForKey(CommonConst.DisplayNameKey) {
+            displayNameTextField.text = name as? String
+        }
     }
 
     override func didReceiveMemoryWarning() {

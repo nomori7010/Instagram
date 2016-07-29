@@ -15,6 +15,8 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var likeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var commentButton: UIButton!
     
     var postData: PostData!
     
@@ -31,8 +33,13 @@ class PostTableViewCell: UITableViewCell {
     
     //表示されるときに呼ばれるメソッドをオーバーライドしてデータをUIに反映する
     override func layoutSubviews() {
+        var commentText: String = ""
         postImageView.image = postData.image
         captionLabel.text = "\(postData.name!) : \(postData.caption!)"
+        for i in 0..<postData.comments.count {
+            commentText = commentText + postData.comments[i]["name"]! + " : " + postData.comments[i]["comment"]! + "\n"
+        }
+        commentLabel.text = commentText
         
         let likeNumber = postData.likes.count
         likeLabel.text = "\(likeNumber)"
