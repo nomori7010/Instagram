@@ -210,18 +210,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYp-P5-KvP">
-                                <rect key="frame" x="277" y="285" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                            </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jJR-VA-1IT">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBQ-1O-JOT">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VYs-B4-6Zn">
-                                                <rect key="frame" x="8" y="562" width="584" height="30"/>
+                                                <rect key="frame" x="8" y="542" width="584" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="h6X-60-0IR"/>
                                                 </constraints>
@@ -244,7 +240,7 @@
                                                     </barButtonItem>
                                                 </items>
                                             </toolbar>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eqk-1q-O97">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Eqk-1q-O97">
                                                 <rect key="frame" x="8" y="40" width="584" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -270,6 +266,7 @@
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
+                                                <exclude reference="gSC-O3-IXO"/>
                                                 <exclude reference="7Mb-QP-A5V"/>
                                                 <exclude reference="YTQ-Pa-R1S"/>
                                                 <exclude reference="bJh-N9-7yx"/>
@@ -283,6 +280,7 @@
                                     <constraint firstItem="zBQ-1O-JOT" firstAttribute="top" secondItem="jJR-VA-1IT" secondAttribute="top" id="3d6-ql-g4l"/>
                                     <constraint firstItem="zBQ-1O-JOT" firstAttribute="width" secondItem="jJR-VA-1IT" secondAttribute="width" id="VeH-An-zE9"/>
                                     <constraint firstAttribute="bottom" secondItem="zBQ-1O-JOT" secondAttribute="bottom" constant="10" id="fW7-zB-NJf"/>
+                                    <constraint firstItem="zBQ-1O-JOT" firstAttribute="height" secondItem="jJR-VA-1IT" secondAttribute="height" id="gX5-bT-fY9"/>
                                     <constraint firstItem="zBQ-1O-JOT" firstAttribute="leading" secondItem="jJR-VA-1IT" secondAttribute="leading" id="lFg-sO-ZMg"/>
                                 </constraints>
                             </scrollView>
